@@ -45,5 +45,45 @@ function swapLetters($word)
     }
 
     return $word;
+}
 
+function mostFrequentElementInArray(Array $array)
+{
+    if (count($array) <= 1) return false;
+
+    $counts = [];
+
+    foreach ($array as $value) {
+        if (array_key_exists($value, $counts)) {
+            $counts[$value] = $counts[$value] + 1;
+        } else {
+            $counts[$value] = 0;
+        }
+    }
+
+    if (array_sum($counts) === 0) return false;
+    arsort($counts);
+
+    
+
+    foreach ($counts as $key => $count)
+    {
+        $max = $count;
+        $mostFrequent[] = $key;
+        unset($counts[$key]);
+        break;
+    }
+
+    foreach ($counts as $key => $value) 
+    {
+        if ($max === $value) {
+            $mostFrequent[] = $key;
+        } else {
+            break;
+        }
+    }
+
+    if (count($mostFrequent) === 1) return $mostFrequent[0];
+
+    return $mostFrequent;
 }
