@@ -1,0 +1,24 @@
+{
+    "name": "alexrusin/cracking-code",
+    "authors": [
+        {
+            "name": "Alex Rusin",
+            "email": "alexrusin_2000@yahoo.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^8.1"
+    },
+
+    "autoload": {
+
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CrackingCode\\Tests\\": "tests/"
+        }
+    }
+}
