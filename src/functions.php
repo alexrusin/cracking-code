@@ -61,27 +61,23 @@ function mostFrequentElementInArray(Array $array)
         }
     }
 
-    if (array_sum($counts) === 0) return false;
-    arsort($counts);
+    $max = 0;
+    $mostFrequent = [];
 
-    
-
-    foreach ($counts as $key => $count)
-    {
-        $max = $count;
-        $mostFrequent[] = $key;
-        unset($counts[$key]);
-        break;
-    }
-
-    foreach ($counts as $key => $value) 
-    {
-        if ($max === $value) {
+    foreach ($counts as $key => $value) {
+        if ($value > $max) {
+            $mostFrequent = [];
             $mostFrequent[] = $key;
-        } else {
-            break;
+            $max = $value;
+            continue;
+        }
+
+        if ($value === $max && $max !== 0) {
+            $mostFrequent[] = $key;
         }
     }
+
+    if (empty($mostFrequent)) return false;
 
     if (count($mostFrequent) === 1) return $mostFrequent[0];
 

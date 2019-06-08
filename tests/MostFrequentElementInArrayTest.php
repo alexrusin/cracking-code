@@ -43,6 +43,6 @@ class MostFrequentElementInArrayTest extends TestCase
      {
         $result = mostFrequentElementInArray([1, 2, 2, 3, 3, 5, 6]);
  
-        $this->assertEquals([3, 2], $result);
+        $this->assertEquals([2, 3], $result);
      }
 }
