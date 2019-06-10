@@ -83,3 +83,19 @@ function mostFrequentElementInArray(Array $array)
 
     return $mostFrequent;
 }
+
+function numbersAddToEight(Array $array) {
+    
+    $sum = 8;
+    $lookup = [];
+
+    foreach ($array as $number) {
+        $compliment = $sum - $number;
+        if (array_key_exists($compliment, $lookup)) {
+            return true;
+        } else {
+            $lookup[$number] = true;
+        }
+    }
+    return false;
+}
