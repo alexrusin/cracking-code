@@ -99,3 +99,37 @@ function numbersAddToEight(Array $array) {
     }
     return false;
 }
+
+function shrinkWord(string $word)
+{
+    $length = strlen($word);
+    if (!$length) return false;
+
+    $counter = 0;
+    $char = $word[0];
+    $shrinked = '';
+
+
+    for ($i = 1; $i < $length; $i++) {
+        if ($word[$i]  == $char) {
+            $counter++;
+        } else {
+            $shrinked .= $char;
+            if ($counter > 0) {
+                $shrinked .= (string) $counter + 1;
+            }
+            $counter = 0;
+            $char = $word[$i];
+        }
+
+        if ($i === $length - 1) {
+            $shrinked .= $char;
+            if ($counter > 0) {
+                $shrinked .= (string) $counter + 1;
+            }
+        }
+
+    }
+
+    return $shrinked;
+}
