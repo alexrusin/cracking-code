@@ -133,3 +133,18 @@ function shrinkWord(string $word)
 
     return $shrinked;
 }
+
+function rotateMatrix90CW($matrix, $n)
+{
+    $matrix90 = [];
+    for ($i = 0; $i < $n; $i++) {
+        for ($j = 0; $j < $n; $j++) {
+            $array[$j] = $matrix[$n - 1 - $j][$i];
+        }
+
+        $matrix90[] = $array;
+    }
+
+   
+    return $matrix90;
+}
