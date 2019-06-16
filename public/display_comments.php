@@ -58,22 +58,7 @@
         foreach ($result as $row) {
             $comments[$row->parentId][] = $row;
         }
-        function displayComment(Array $comments, int $n) {
-            if (isset($comments[$n])) {
-            $str = "<ul>";
-            foreach ($comments[$n] as $comment) {
-                $str .= "<li><div class='comment'><span class='pic'>{$comment->username}</span>";
-                $str .= "<span class='datetime'>{$comment->createdAt}</span>";
-                $str .= "<span class='commenttext'>" . $comment->comment . "</span></div>";
-                $str .= displayComment($comments, $comment->id);
-                $str .= "</li>";
-            }
-            $str .= "</ul>";
-            return $str;
-            }
-            return "";
-        }
-        echo displayComment($comments, 0);
+        echo CrackingCode\displayComment($comments, 0);
         ?>
 
     </body>
