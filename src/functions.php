@@ -99,3 +99,35 @@ function numbersAddToEight(Array $array) {
     }
     return false;
 }
+
+/**
+ * return count of pairs that have difference of 2.
+ * [1, 7, 5, 9, 2, 12, 3] => (1,3) (3,5) (5,7) (7,9)
+ */
+
+function differenceIsTwo(Array $array)
+{
+    $hashTable = [];
+    $count = 0;
+
+    foreach ($array as $key) {
+        $hashTable[$key] = true;
+    }
+
+    foreach ($array as $number) {
+        $complimentOne = $number + 2;
+        $complimentTwo = $number - 2;
+
+        if (array_key_exists($complimentOne, $hashTable)) {
+            $count ++;
+        }
+
+        if (array_key_exists($complimentTwo, $hashTable)) {
+            $count ++;
+        }
+    }
+
+    return $count / 2;
+
+   
+}
