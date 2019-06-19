@@ -105,7 +105,7 @@ function numbersAddToEight(Array $array) {
  * [1, 7, 5, 9, 2, 12, 3] => (1,3) (3,5) (5,7) (7,9)
  */
 
-function differenceIsTwo(Array $array)
+function differenceIsTwo(array $array)
 {
     $hashTable = [];
     $count = 0;
@@ -128,6 +128,70 @@ function differenceIsTwo(Array $array)
     }
 
     return $count / 2;
+}
 
    
+function shrinkWord(string $word)
+{
+    $length = strlen($word);
+    if (!$length) return false;
+
+    $counter = 0;
+    $char = $word[0];
+    $shrinked = '';
+
+
+    for ($i = 1; $i < $length; $i++) {
+        if ($word[$i]  == $char) {
+            $counter++;
+        } else {
+            $shrinked .= $char;
+            if ($counter > 0) {
+                $shrinked .= (string) $counter + 1;
+            }
+            $counter = 0;
+            $char = $word[$i];
+        }
+
+        if ($i === $length - 1) {
+            $shrinked .= $char;
+            if ($counter > 0) {
+                $shrinked .= (string) $counter + 1;
+            }
+        }
+
+    }
+
+    return $shrinked;
+}
+
+function rotateMatrix90CW($matrix, $n)
+{
+    $matrix90 = [];
+    for ($i = 0; $i < $n; $i++) {
+        for ($j = 0; $j < $n; $j++) {
+            $array[$j] = $matrix[$n - 1 - $j][$i];
+        }
+
+        $matrix90[] = $array;
+    }
+
+   
+    return $matrix90;
+}
+
+function displayComment(Array $comments, int $n) {
+    if (isset($comments[$n])) {
+        $str = "<ul>";
+        foreach ($comments[$n] as $comment) {
+            $str .= "<li><div class='comment'><span class='pic'>{$comment->username}</span>";
+            $str .= "<span class='datetime'>{$comment->createdAt}</span>";
+            $str .= "<span class='commenttext'>" . $comment->comment . "</span></div>";
+            $str .= displayComment($comments, $comment->id);
+            $str .= "</li>";
+        }
+        $str .= "</ul>";
+        return $str;
+    }
+    return "";
 }
