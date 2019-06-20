@@ -84,6 +84,19 @@ function mostFrequentElementInArray(Array $array)
     return $mostFrequent;
 }
 
+function getMax($array) {
+    
+    if(empty($array)) return false;
+    $index = 0;
+    foreach($array as $key => $value) {
+        if($array[$index] < $value) {
+            $index = $key;
+        }
+    }
+
+    return $array[$index];
+}
+
 function numbersAddToEight(Array $array) {
     
     $sum = 8;
@@ -194,4 +207,34 @@ function displayComment(Array $comments, int $n) {
         return $str;
     }
     return "";
+}
+
+/**
+ * Calculates how many permutations of a certain string has a line of characters
+ * abbc  cbabadcbbabbcbabaabccbabc has 7 permutations.  
+ */
+
+function numberOfStringPermutations($shorterString, $longerString) 
+{
+    $positions = [];
+    $window = strlen($shorterString);
+    
+    $stringArray = str_split($longerString);
+    for ($i = 0; $i < strlen($longerString); $i++) {
+        $testString = $shorterString;
+        for ($j = 0; $j < $window; $j++) {
+            
+            if(!array_key_exists($i + $j, $stringArray)) {
+                break;
+            }
+            $testString = preg_replace('/'. $stringArray[$i+$j] . '/', '', $testString, 1);
+            
+        }
+
+        if (strlen($testString) === 0) {
+            $positions[] = $i;
+        } 
+    }
+
+    return count($positions);
 }
